@@ -25,12 +25,12 @@ const CategoriesSort = () => {
         </svg>
         Сортировать по:
       </p>
-      <p
+      <button
         className={styles.sortText}
         onClick={() => setPopupVisible(!popupVisible)}
       >
         {sortBy}
-      </p>
+      </button>
       <Fade in={popupVisible}>
         <ul
           className={styles.popup}
