@@ -1,4 +1,4 @@
-import CartBtn from '../CartBtn/CartBtn';
+import CartBtn from './CartBtn/CartBtn';
 import styles from './Header.module.css';
 
 import icon from './icon.svg';
@@ -15,9 +15,7 @@ const Header = () => {
       />
       <div className={styles.titleBlock}>
         <h1 className={styles.title}>react pizza</h1>
-        <span className={styles.subtitle}>
-          самая вкусная пицца во вселенной
-        </span>
+        <h2 className={styles.subtitle}>самая вкусная пицца во вселенной</h2>
       </div>
       <CartBtn />
     </header>

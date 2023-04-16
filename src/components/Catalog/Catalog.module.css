@@ -1,0 +1,14 @@
+.catalog {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-end;
+  padding: 40px 0;
+  row-gap: 65px;
+  column-gap: 35px;
+}
+
+@media (max-width: 899px) {
+  .catalog {
+    justify-content: center;
+  }
+}

@@ -1,0 +1,139 @@
+.pizzaItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 260px;
+  text-align: center;
+  animation: fade 0.4s;
+}
+
+.title {
+  margin-bottom: 20px;
+}
+
+.config {
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  width: 260px;
+  padding: 6px;
+  background-color: #f3f3f3;
+  border-radius: 10px;
+}
+
+.configBtnWrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.configBtn {
+  width: 100%;
+  padding: 8px;
+  transition: background-color 0.2s;
+  font-weight: 700;
+}
+
+.configBtnActive {
+  background-color: #fff;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.04);
+  border-radius: 5px;
+}
+
+.configBtnSizeWrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-top: 6px;
+}
+
+.configBtnSize {
+  width: 100%;
+}
+
+.bottom {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.price {
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 27px;
+  letter-spacing: 0.015em;
+}
+
+.bottomBtn {
+  display: flex;
+  align-items: center;
+  min-width: 100px;
+  padding: 10px 20px;
+  background-color: #fff;
+  border: 1px solid #fe5f1e;
+  border-radius: 30px;
+  color: #fe5f1e;
+  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+  font-weight: 700;
+}
+
+.bottomBtn:hover {
+  background-color: #fe5f1e;
+  color: #fff;
+}
+
+.bottomBtn:active {
+  background-color: #f24701;
+  transform: translateY(1px);
+}
+
+.bottomBtnText {
+  transition: color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+  margin-right: 5px;
+}
+
+.bottomBtnCounter {
+  position: relative;
+  top: -1px;
+  left: 3px;
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  border-radius: 30px;
+  background-color: #fe5f1e;
+  color: #fff;
+  font-size: 13px;
+  line-height: 22px;
+  transition: all 0.15s ease-in-out;
+}
+
+@media (max-width: 899px) {
+  .pizzaItem {
+    min-width: 50%;
+  }
+  .bottom {
+    justify-content: center;
+  }
+  .bottomBtn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 599px) {
+  .pizzaItem {
+    width: 100%;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

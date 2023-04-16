@@ -34,10 +34,24 @@ img {
   height: auto;
 }
 
-.container {
-  margin: 0 auto;
-  padding: 0 15px;
-  /* max-width: CHANGETHIS+PADDING (30px); */
+button {
+  color: #000;
+  border: none;
+  cursor: pointer;
+  background: none;
+}
+
+.MuiContainer-root {
+  background-color: #fff;
+  margin: 50px auto;
+  border-radius: 10px;
+}
+
+@media (max-width: 599px) {
+  .MuiContainer-root {
+    margin-top: 0;
+    border-radius: 0;
+  }
 }
 
 /* Animations */
@@ -50,3 +64,11 @@ img {
     opacity: 1;
   }
 }
+
+/* @media (hover: none) {
+  button:hover,
+  a:hover {
+    color: inherit;
+    background-color: inherit;
+  }
+} */
