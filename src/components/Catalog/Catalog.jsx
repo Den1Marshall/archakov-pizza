@@ -2,9 +2,11 @@ import styles from './Catalog.module.css';
 import { useEffect, useState } from 'react';
 
 import PizzaItem from './PizzaItem/PizzaItem';
+import { Skeleton } from './PizzaItem/Skeleton';
 
 const Catalog = () => {
   const [renderedPizzas, setRenderedPizzas] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   const getPizzas = async () => {
     const response = await fetch(
@@ -33,13 +35,20 @@ const Catalog = () => {
         />
       ))
     );
+    setIsLoading(false);
   };
 
   useEffect(() => {
     sortByRating();
   }, []);
 
-  return <main className={styles.catalog}>{renderedPizzas}</main>;
+  return (
+    <main className={styles.catalog}>
+      {isLoading
+        ? [...new Array(10)].map((value, index) => <Skeleton key={index} />)
+        : renderedPizzas}
+    </main>
+  );
 };
 
 export default Catalog;
