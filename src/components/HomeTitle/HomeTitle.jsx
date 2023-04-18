@@ -1,4 +1,4 @@
-import styles from './MainTitle.module.css';
+import styles from './HomeTitle.module.css';
 
 const MainTitle = () => {
   return <h2 className={styles.title}>Все пиццы</h2>;

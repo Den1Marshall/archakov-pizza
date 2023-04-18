@@ -1,0 +1,100 @@
+.container {
+  margin: 0 auto;
+}
+
+.cart {
+  padding: 40px 0;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.title {
+  font-size: 32px;
+}
+
+.titleSvg {
+  position: relative;
+  top: 2px;
+  margin-right: 10px;
+}
+
+.clearBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  font-size: 18px;
+  color: #b6b6b6;
+  user-select: none;
+  transition: all 0.15s ease-in-out;
+}
+
+.clearBtn svg {
+  stroke: #b6b6b6;
+  transition: all 0.15s ease-in-out;
+}
+
+.clearBtn:hover {
+  color: #232323;
+}
+
+.clearBtn:hover svg {
+  stroke: #232323;
+}
+
+.list {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+  list-style-type: none;
+}
+
+.bottom {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  row-gap: 40px;
+  padding-top: 50px;
+}
+
+.bottomAmount {
+  width: 50%;
+  font-size: 22px;
+}
+
+.bottomTotal {
+  width: 50%;
+  font-size: 22px;
+  text-align: right;
+}
+
+.bottomTotal strong {
+  color: #fe5f1e;
+}
+
+.bottomBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 210px;
+  padding: 16px;
+  transition: all 0.15s ease-in-out;
+  font-weight: 700;
+  border-radius: 30px;
+}
+
+.bottomBtnBack {
+  color: #b6b6b6;
+}
+
+.bottomBtnPay {
+  color: #fff;
+  background-color: #fe5f1e;
+}

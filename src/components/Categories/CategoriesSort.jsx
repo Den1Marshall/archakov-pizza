@@ -2,11 +2,12 @@ import { useState } from 'react';
 import styles from './Categories.module.css';
 import { Fade } from '@mui/material';
 
-const CategoriesSort = () => {
+const CategoriesSort = ({ sortBy, setSortBy }) => {
   const [popupVisible, setPopupVisible] = useState(false);
-  const [sortBy, setSortBy] = useState('популярности');
 
   const sortTypes = ['популярности', 'цене', 'алфавиту'];
+
+  console.log('categories sort render');
 
   return (
     <div className={styles.sort}>

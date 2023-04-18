@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import PizzaItem from './PizzaItem/PizzaItem';
 import { Skeleton } from './PizzaItem/Skeleton';
 
-const Catalog = () => {
+const Catalog = ({ activeCategory, sortBy }) => {
   const [renderedPizzas, setRenderedPizzas] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -18,13 +18,11 @@ const Catalog = () => {
     return pizzas;
   };
 
-  const sortByRating = async () => {
-    const pizzasCopy = await getPizzas();
-
-    pizzasCopy.sort((a, b) => b.rating - a.rating);
+  const renderPizzas = async () => {
+    const pizzas = await getPizzas();
 
     setRenderedPizzas(
-      pizzasCopy.map((pizza) => (
+      pizzas.map((pizza) => (
         <PizzaItem
           key={pizza.id}
           name={pizza.title}
@@ -35,12 +33,16 @@ const Catalog = () => {
         />
       ))
     );
+
     setIsLoading(false);
   };
 
   useEffect(() => {
-    sortByRating();
+    window.scrollTo(0, 0);
+    renderPizzas();
   }, []);
+
+  console.log('catalog render');
 
   return (
     <main className={styles.catalog}>

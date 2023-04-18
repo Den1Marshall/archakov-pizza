@@ -1,18 +1,17 @@
-import { useState } from 'react';
 import styles from './Categories.module.css';
 import CategoriesSort from './CategoriesSort';
 
-const Categories = () => {
-  const [activeCategory, setActiveCategory] = useState(0);
-
+const Categories = ({ activeCategory, setActiveCategory }) => {
   const categories = [
     'Все',
     'Мясные',
     'Вегетарианские',
     'Гриль',
     'Острые',
-    // 'Закрытые',
+    'Закрытые',
   ];
+
+  console.log('categories render');
 
   return (
     <section className={styles.categories}>

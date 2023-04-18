@@ -1,0 +1,27 @@
+.error {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.emoji {
+  margin-top: 40px;
+  font-size: 64px;
+}
+
+.title {
+  margin-top: 20px;
+  text-align: center;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.subtitle {
+  margin-top: 20px;
+  font-weight: 500;
+}
+
+.link {
+  margin: 40px 0;
+}

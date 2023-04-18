@@ -1,9 +1,13 @@
+.link {
+  margin-left: auto;
+  text-decoration: none;
+}
+
 .btn {
   z-index: 1;
   display: flex;
   align-items: center;
   min-width: 100px;
-  margin-left: auto;
   padding: 12px 25px;
   background-color: #fe5f1e;
   color: #fff;
@@ -31,7 +35,7 @@
 }
 
 @media (max-width: 899px) {
-  .btn {
+  .link {
     position: fixed;
     bottom: calc(env(safe-area-inset-bottom) + 10px);
     right: 5px;
