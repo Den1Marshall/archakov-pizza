@@ -9,8 +9,11 @@ const Catalog = ({ activeCategory, sortBy }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   const getPizzas = async () => {
+    setIsLoading(true);
     const response = await fetch(
-      'https://63e9515f4f3c6aa6e7cb79a8.mockapi.io/api/v1/pizzas'
+      `https://63e9515f4f3c6aa6e7cb79a8.mockapi.io/api/v1/pizzas?category=${
+        activeCategory ? activeCategory : ''
+      }&sortby=${sortBy.value}`
     );
 
     const pizzas = await response.json();
@@ -40,7 +43,7 @@ const Catalog = ({ activeCategory, sortBy }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
     renderPizzas();
-  }, []);
+  }, [activeCategory, sortBy]);
 
   console.log('catalog render');
 

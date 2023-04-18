@@ -5,7 +5,32 @@ import { Fade } from '@mui/material';
 const CategoriesSort = ({ sortBy, setSortBy }) => {
   const [popupVisible, setPopupVisible] = useState(false);
 
-  const sortTypes = ['популярности', 'цене', 'алфавиту'];
+  const sortTypes = [
+    {
+      name: 'Популярности (DESC)',
+      value: 'rating&order=desc',
+    },
+    {
+      name: 'Популярности (ASC)',
+      value: 'rating&order=ASC',
+    },
+    {
+      name: 'Цене (DESC)',
+      value: 'price&order=desc',
+    },
+    {
+      name: 'Цене (ASC)',
+      value: 'price&order=ASC',
+    },
+    {
+      name: 'Алфавиту (DESC)',
+      value: 'title&order=desc',
+    },
+    {
+      name: 'Алфавиту (ASC)',
+      value: 'title&order=asc',
+    },
+  ];
 
   console.log('categories sort render');
 
@@ -30,25 +55,25 @@ const CategoriesSort = ({ sortBy, setSortBy }) => {
         className={styles.sortText}
         onClick={() => setPopupVisible(!popupVisible)}
       >
-        {sortBy}
+        {sortBy.name}
       </button>
       <Fade in={popupVisible}>
         <ul
           className={styles.popup}
           onMouseLeave={() => setPopupVisible(false)}
         >
-          {sortTypes.map((sortType) => (
+          {sortTypes.map((sortType, index) => (
             <li
-              key={sortType}
+              key={index}
               className={`${styles.popupItem} ${
-                sortType === sortBy ? styles.popupItemActive : ''
+                sortType.value === sortBy.value ? styles.popupItemActive : ''
               }`}
               onClick={() => {
                 setPopupVisible(false);
                 setSortBy(sortType);
               }}
             >
-              {sortType}
+              {sortType.name}
             </li>
           ))}
         </ul>

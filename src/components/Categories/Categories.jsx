@@ -1,7 +1,12 @@
 import styles from './Categories.module.css';
 import CategoriesSort from './CategoriesSort';
 
-const Categories = ({ activeCategory, setActiveCategory }) => {
+const Categories = ({
+  activeCategory,
+  setActiveCategory,
+  sortBy,
+  setSortBy,
+}) => {
   const categories = [
     'Все',
     'Мясные',
@@ -30,7 +35,7 @@ const Categories = ({ activeCategory, setActiveCategory }) => {
           </button>
         ))}
       </div>
-      <CategoriesSort />
+      <CategoriesSort sortBy={sortBy} setSortBy={setSortBy} />
     </section>
   );
 };
