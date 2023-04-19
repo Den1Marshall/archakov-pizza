@@ -1,10 +1,12 @@
 import styles from './Catalog.module.css';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
-import PizzaItem from './PizzaItem/PizzaItem';
-import { Skeleton } from './PizzaItem/Skeleton';
+import PizzaItem from '../PizzaItem/PizzaItem';
+import { Skeleton } from '../PizzaItem/Skeleton';
+import { SearchContext } from '../../context/SearchContext';
 
 const Catalog = ({ activeCategory, sortBy }) => {
+  const { inputValue } = useContext(SearchContext);
   const [renderedPizzas, setRenderedPizzas] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -25,16 +27,20 @@ const Catalog = ({ activeCategory, sortBy }) => {
     const pizzas = await getPizzas();
 
     setRenderedPizzas(
-      pizzas.map((pizza) => (
-        <PizzaItem
-          key={pizza.id}
-          name={pizza.title}
-          img={pizza.imageUrl}
-          types={pizza.types}
-          sizes={pizza.sizes}
-          price={pizza.price}
-        />
-      ))
+      pizzas
+        .filter((pizza) =>
+          pizza.title.toLowerCase().includes(inputValue.toLowerCase())
+        )
+        .map((pizza) => (
+          <PizzaItem
+            key={pizza.id}
+            name={pizza.title}
+            img={pizza.imageUrl}
+            types={pizza.types}
+            sizes={pizza.sizes}
+            price={pizza.price}
+          />
+        ))
     );
 
     setIsLoading(false);
@@ -43,15 +49,17 @@ const Catalog = ({ activeCategory, sortBy }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
     renderPizzas();
-  }, [activeCategory, sortBy]);
+  }, [activeCategory, sortBy, inputValue]);
+
+  const skeleton = [...new Array(10)].map((value, index) => (
+    <Skeleton key={index} />
+  ));
 
   console.log('catalog render');
 
   return (
     <main className={styles.catalog}>
-      {isLoading
-        ? [...new Array(10)].map((value, index) => <Skeleton key={index} />)
-        : renderedPizzas}
+      {isLoading ? skeleton : renderedPizzas}
     </main>
   );
 };

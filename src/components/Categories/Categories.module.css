@@ -59,7 +59,7 @@
 .popup {
   position: absolute;
   right: 0;
-  bottom: -180px;
+  bottom: -390px;
   display: flex;
   flex-flow: column wrap;
   align-items: center;
