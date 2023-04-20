@@ -1,5 +1,5 @@
 .search {
-  width: 450px;
+  max-width: 450px;
   display: flex;
   align-items: center;
   margin: 0 auto;
@@ -34,5 +34,17 @@
 
   to {
     opacity: 1;
+  }
+}
+
+@media (max-width: 1199px) {
+  .search {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 899px) {
+  .search {
+    margin-top: 40px;
   }
 }

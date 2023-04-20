@@ -47,6 +47,21 @@ button {
   border-radius: 10px;
 }
 
+.MuiPagination-root {
+  margin-top: 40px;
+}
+
+.MuiPaginationItem-root {
+  border-color: #fe5f1e !important;
+  background: none !important;
+  color: #fe5f1e !important;
+}
+
+.MuiPaginationItem-root:hover {
+  background-color: #fe5f1e !important;
+  color: #fff !important;
+}
+
 @media (max-width: 599px) {
   .MuiContainer-root {
     margin-top: 0;
