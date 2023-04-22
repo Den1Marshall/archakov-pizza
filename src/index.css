@@ -53,11 +53,15 @@ button {
 
 .MuiPaginationItem-root {
   border-color: #fe5f1e !important;
-  background: none !important;
   color: #fe5f1e !important;
 }
 
 .MuiPaginationItem-root:hover {
+  background-color: #fe5f1e !important;
+  color: #fff !important;
+}
+
+.MuiPaginationItem-root.Mui-selected {
   background-color: #fe5f1e !important;
   color: #fff !important;
 }

@@ -4,7 +4,7 @@ import { useContext, useEffect, useState } from 'react';
 import PizzaItem from '../PizzaItem/PizzaItem';
 import { Skeleton } from '../PizzaItem/Skeleton';
 import { SearchContext } from '../../context/SearchContext';
-import { Pagination, PaginationItem } from '@mui/material';
+import { Pagination } from '@mui/material';
 
 const Catalog = ({ activeCategory, sortBy }) => {
   const { inputValue } = useContext(SearchContext);
@@ -13,7 +13,7 @@ const Catalog = ({ activeCategory, sortBy }) => {
 
   const [currentPage, setCurrentPage] = useState(1);
 
-  const category = `&category=${activeCategory ? activeCategory : ''}`;
+  // const category = `&category=${activeCategory ? activeCategory : ''}`;
   const sortby = `&sortBy=${sortBy.value}`;
   const search = `&title=${inputValue ? inputValue : ''}`;
   const pagination = `&page=${currentPage}&limit=4`;
@@ -51,6 +51,7 @@ const Catalog = ({ activeCategory, sortBy }) => {
   useEffect(() => {
     // window.scrollTo(0, 0);
     renderPizzas();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeCategory, sortBy, inputValue, currentPage]);
 
   const skeleton = [...new Array(10)].map((value, index) => (
