@@ -1,13 +1,20 @@
 import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close';
 import styles from './Search.module.css';
-import { useContext } from 'react';
+import { useContext, useRef } from 'react';
 import { SearchContext } from '../../context/SearchContext';
 
 const Search = () => {
   const { inputValue, setInputValue } = useContext(SearchContext);
+
+  const inputRef = useRef(null);
+
   const onInput = (e) => setInputValue(e.target.value);
-  const clearInput = () => setInputValue('');
+
+  const clearInput = () => {
+    setInputValue('');
+    inputRef.current.focus();
+  };
 
   return (
     <div className={styles.search}>
@@ -16,6 +23,7 @@ const Search = () => {
         className={styles.input}
         value={inputValue}
         onInput={onInput}
+        ref={inputRef}
         type='text'
         placeholder='Поиск пиццы...'
       />
