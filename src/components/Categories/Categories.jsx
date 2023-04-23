@@ -1,12 +1,13 @@
+import { useDispatch, useSelector } from 'react-redux';
 import styles from './Categories.module.css';
 import CategoriesSort from './CategoriesSort';
 
-const Categories = ({
-  activeCategory,
-  setActiveCategory,
-  sortBy,
-  setSortBy,
-}) => {
+import { setCategoryID } from '../../redux/slices/filterSlice';
+
+const Categories = () => {
+  const categoryID = useSelector((store) => store.filterSlice.categoryID);
+  const dispatch = useDispatch();
+
   const categories = [
     'Все',
     'Мясные',
@@ -25,17 +26,17 @@ const Categories = ({
           <button
             key={index}
             className={
-              activeCategory === index
+              categoryID === index
                 ? `${styles.btn} ${styles.btnActive}`
                 : styles.btn
             }
-            onClick={() => setActiveCategory(index)}
+            onClick={() => dispatch(setCategoryID(index))}
           >
             {category}
           </button>
         ))}
       </div>
-      <CategoriesSort sortBy={sortBy} setSortBy={setSortBy} />
+      <CategoriesSort />
     </section>
   );
 };
