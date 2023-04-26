@@ -1,11 +1,13 @@
 import { Link } from 'react-router-dom';
 import styles from './CartBtn.module.css';
+import { useSelector } from 'react-redux';
 
-const CartBtn = ({ price = '0 ₴', itemsCount = 0 }) => {
+const CartBtn = () => {
+  const { totalAmount, totalPrice } = useSelector((store) => store.cartSlice);
   return (
     <Link className={styles.link} to='/cart'>
       <button className={styles.btn}>
-        <p className={styles.text}>{price}</p>
+        <p className={styles.text}>{totalPrice} ₴</p>
         <div className={styles.divider}></div>
         <svg
           className={styles.icon}
@@ -37,7 +39,7 @@ const CartBtn = ({ price = '0 ₴', itemsCount = 0 }) => {
             strokeLinejoin='round'
           ></path>
         </svg>
-        <p className={styles.text}>{itemsCount}</p>
+        <p className={styles.text}>{totalAmount}</p>
       </button>
     </Link>
   );

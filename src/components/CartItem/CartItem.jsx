@@ -1,32 +1,56 @@
-import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import styles from './CartItem.module.css';
 
 import CloseIcon from '@mui/icons-material/Close';
 
-const CartItem = () => {
-  const [amount, setAmount] = useState(0);
+import {
+  decreaseAmount,
+  increaseAmount,
+  deleteItem,
+} from '../../redux/slices/cartSlice';
 
-  const increaseAmount = () => setAmount(amount + 1);
-  const decreaseAmount = () => (amount > 0 ? setAmount(amount - 1) : 0);
+const CartItem = ({ name, img, activeType, activeSize, price, pizzaCount }) => {
+  const dispatch = useDispatch();
 
   return (
     <li className={styles.item}>
-      <img className={styles.img} src='' alt='Pizza' width={80} height={80} />
+      <img
+        className={styles.img}
+        src={img}
+        alt='Pizza'
+        width={80}
+        height={80}
+      />
       <h3 className={styles.title}>
-        Сырный цыпленок
-        <h4 className={styles.subtitle}>тонкое тесто, 26 см.</h4>
+        {name}
+        <p className={styles.subtitle}>
+          {activeType}, {activeSize} см.
+        </p>
       </h3>
       <div className={styles.wrapper}>
-        <button className={styles.btn} onClick={decreaseAmount}>
+        <button
+          className={styles.btn}
+          onClick={() =>
+            dispatch(decreaseAmount({ name, activeSize, activeType, price }))
+          }
+        >
           -
         </button>
-        <p className={styles.amount}>{amount}</p>
-        <button className={styles.btn} onClick={increaseAmount}>
+        <p className={styles.amount}>{pizzaCount}</p>
+        <button
+          className={styles.btn}
+          onClick={() =>
+            dispatch(increaseAmount({ name, activeSize, activeType, price }))
+          }
+        >
           +
         </button>
       </div>
-      <p className={styles.price}>770 ₴</p>
-      <button className={styles.deleteBtn}>
+      <p className={styles.price}>{price} ₴</p>
+      <button
+        className={styles.deleteBtn}
+        onClick={() => dispatch(deleteItem({ name, activeSize, activeType }))}
+      >
         <CloseIcon />
       </button>
     </li>

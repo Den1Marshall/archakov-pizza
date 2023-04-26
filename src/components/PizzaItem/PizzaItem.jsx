@@ -1,16 +1,76 @@
+import { useDispatch, useSelector } from 'react-redux';
 import styles from './PizzaItem.module.css';
-import PizzaItemBottomBtn from './PizzaItemBottomBtn';
-import PizzaItemConfig from './PizzaItemConfig';
+import { addCartItem } from '../../redux/slices/cartSlice';
+import { useState } from 'react';
 
-const PizzaItem = ({ name, img, types, sizes, price }) => {
+const PizzaItem = ({ name, img, types, sizes, price, index }) => {
+  const [pizzaCount, setPizzaCount] = useState(1);
+  const [activeSize, setActiveSize] = useState(sizes[0]);
+  const [activeType, setActiveType] = useState(types[0]);
+
+  const { items } = useSelector((store) => store.cartSlice);
+
+  const dispatch = useDispatch();
+
   return (
     <article className={styles.pizzaItem}>
       <img src={img} alt='Pizza' width={260} height={260} />
       <h2 className={styles.title}>{name}</h2>
-      <PizzaItemConfig sizes={sizes} types={types} />
+      <div className={styles.config}>
+        <div className={styles.configBtnWrapper}>
+          {types.map((type) => (
+            <button
+              key={type}
+              onClick={() => setActiveType(type)}
+              className={`${styles.configBtn} ${
+                activeType === type ? styles.configBtnActive : ''
+              }`}
+            >
+              {type === 0 ? 'Традиционная' : 'Тонкая'}
+            </button>
+          ))}
+        </div>
+        <div className={styles.configBtnSizeWrapper}>
+          {sizes.map((size) => (
+            <button
+              key={size}
+              onClick={() => setActiveSize(size)}
+              className={`${styles.configBtn} ${styles.configBtnSize} ${
+                activeSize === size ? styles.configBtnActive : ''
+              }`}
+            >
+              {size} см.
+            </button>
+          ))}
+        </div>
+      </div>
       <div className={styles.bottom}>
         <p className={styles.price}>От {price} ₴</p>
-        <PizzaItemBottomBtn />
+        <button
+          className={styles.bottomBtn}
+          onClick={() => {
+            setPizzaCount(pizzaCount + 1);
+            dispatch(
+              addCartItem({
+                name,
+                img,
+                activeType: activeType === 0 ? 'Традиционная' : 'Тонкая',
+                activeSize,
+                price,
+                pizzaCount,
+              })
+            );
+          }}
+        >
+          <span className={styles.bottomBtnText}>Добавить</span>
+          <span className={styles.bottomBtnCounter}>
+            {items.filter((item) => item.name === name)
+              ? items
+                  .filter((item) => item.name === name)
+                  .reduce((reducer, item) => (reducer += item.pizzaCount), 0)
+              : 0}
+          </span>
+        </button>
       </div>
     </article>
   );
