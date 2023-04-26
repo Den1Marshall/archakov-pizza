@@ -1,0 +1,46 @@
+.cart {
+  text-align: center;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 90px;
+}
+
+.title {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.text {
+  font-size: 18px;
+  line-height: 145.4%;
+  letter-spacing: 0.01em;
+  color: #777777;
+}
+
+.img {
+  display: block;
+  margin: 45px auto 60px;
+}
+
+.link {
+  width: 230px;
+  margin: 0 auto;
+  padding: 12px 0 14px;
+  font-weight: 600;
+  font-size: 18px;
+  transition: background-color 0.15s ease-in-out;
+  background-color: #232323;
+  border-radius: 30px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.link:hover {
+  background-color: #3d3d3d;
+}
+
+.link:active {
+  transform: translateY(1px);
+}
