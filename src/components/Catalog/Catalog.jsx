@@ -72,7 +72,7 @@ const Catalog = () => {
       <Pagination
         variant='outlined'
         size='large'
-        count={3}
+        count={categoryID === 0 ? 3 : 1}
         page={currentPage}
         onChange={(e, value) => setCurrentPage(value)}
       />
