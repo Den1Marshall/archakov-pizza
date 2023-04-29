@@ -15,7 +15,7 @@ const Search = () => {
   const inputDebounce = useCallback(
     debounce((str) => {
       setInputValue(str);
-    }, 500),
+    }, 250),
     []
   );
 
