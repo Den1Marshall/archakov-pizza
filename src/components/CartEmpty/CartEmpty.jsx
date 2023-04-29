@@ -8,10 +8,8 @@ const CartEmpty = () => {
   return (
     <Container maxWidth='md'>
       <Fade in={true}>
-        <div class={styles.cart}>
-          <h2 className={styles.title}>
-            Корзина пустая <icon>😕</icon>
-          </h2>
+        <div className={styles.cart}>
+          <h2 className={styles.title}>Корзина пустая 😕</h2>
           <p className={styles.text}>
             Вероятней всего, вы не заказывали ещё пиццу.
             <br />
