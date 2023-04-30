@@ -1,12 +1,13 @@
 import CartBtn from '../CartBtn/CartBtn';
 import styles from './Header.module.css';
 
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import icon from './icon.svg';
 import Search from '../Search/Search';
 
 const Header = () => {
+  const { pathname } = useLocation();
   return (
     <header className={styles.header}>
       <Link to='/'>
@@ -22,8 +23,8 @@ const Header = () => {
         <h1 className={styles.title}>react pizza</h1>
         <h2 className={styles.subtitle}>самая вкусная пицца во вселенной</h2>
       </div>
-      <Search />
-      <CartBtn />
+      {pathname !== '/cart' && <Search />}
+      {pathname !== '/cart' && <CartBtn />}
     </header>
   );
 };
