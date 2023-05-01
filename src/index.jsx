@@ -10,27 +10,29 @@ import Home from './pages/Home';
 import Cart from './pages/Cart';
 import { Provider } from 'react-redux';
 import store from './redux/store';
+import FullPizza from './pages/FullPizza';
 
 // import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>
-    <React.StrictMode>
-      <BrowserRouter>
-        <Routes>
-          <Route path='/' element={<Layout />}>
-            <Route index element={<Home />} />
-            <Route path='/cart' element={<Cart />} />
-            <Route
-              path='*'
-              element={<ErrorPage />}
-              errorElement={<ErrorPage />}
-            />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </React.StrictMode>
+    {/* <React.StrictMode> */}
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path='/cart' element={<Cart />} />
+          <Route path='/pizza/:id' element={<FullPizza />} />
+          <Route
+            path='*'
+            element={<ErrorPage />}
+            errorElement={<ErrorPage />}
+          />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+    {/* </React.StrictMode> */}
   </Provider>
 );
 

@@ -45,6 +45,7 @@ const Catalog = () => {
           types={pizza.types}
           sizes={pizza.sizes}
           price={pizza.price}
+          id={pizza.id}
         />
       ))
     );

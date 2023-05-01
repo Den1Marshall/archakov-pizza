@@ -7,6 +7,11 @@
   animation: fade 0.1s linear;
 }
 
+.link {
+  color: initial;
+  text-decoration: none;
+}
+
 .title {
   margin-bottom: 20px;
 }

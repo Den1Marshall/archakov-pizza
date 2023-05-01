@@ -2,8 +2,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import styles from './PizzaItem.module.css';
 import { addCartItem } from '../../redux/slices/cartSlice';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
-const PizzaItem = ({ name, img, types, sizes, price, index }) => {
+const PizzaItem = ({ name, img, types, sizes, price, id }) => {
   const [pizzaCount, setPizzaCount] = useState(1);
   const [activeSize, setActiveSize] = useState(sizes[0]);
   const [activeType, setActiveType] = useState(types[0]);
@@ -14,8 +15,10 @@ const PizzaItem = ({ name, img, types, sizes, price, index }) => {
 
   return (
     <article className={styles.pizzaItem}>
-      <img src={img} alt='Pizza' width={260} height={260} />
-      <h2 className={styles.title}>{name}</h2>
+      <Link className={styles.link} to={`pizza/${id}`}>
+        <img src={img} alt='Pizza' width={260} height={260} />
+        <h2 className={styles.title}>{name}</h2>
+      </Link>
       <div className={styles.config}>
         <div className={styles.configBtnWrapper}>
           {types.map((type) => (

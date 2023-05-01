@@ -1,0 +1,9 @@
+.pizza {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  padding: 40px 0;
+  min-height: 500px;
+}
