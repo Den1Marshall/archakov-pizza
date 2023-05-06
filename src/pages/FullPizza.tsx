@@ -7,8 +7,14 @@ import { Fade } from '@mui/material';
 const FullPizza = () => {
   const { id } = useParams();
 
-  const defaultPizza = {
-    img: '',
+  interface IPizza {
+    imageUrl: string;
+    title: string;
+    price: number;
+  }
+
+  const defaultPizza: IPizza = {
+    imageUrl: '',
     title: '',
     price: 0,
   };
@@ -27,22 +33,17 @@ const FullPizza = () => {
           navigate('/');
         }
       })
-      .then((pizza) => setCurrentPizza(...pizza));
+      .then((pizza) => setCurrentPizza(pizza[0]));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
   return (
     <Fade in={currentPizza !== defaultPizza}>
       <article className={styles.pizza}>
-        <img
-          className={styles.img}
-          src={currentPizza.imageUrl}
-          alt='Pizza'
-          width={260}
-          height={260}
-        />
-        <h2 className={styles.title}>{currentPizza.title}</h2>
-        <p className={styles.text}>{currentPizza.title}</p>
-        <h4 className={styles.price}>{currentPizza.price} ₴</h4>
+        <img src={currentPizza.imageUrl} alt='Pizza' width={260} height={260} />
+        <h2>{currentPizza.title}</h2>
+        <p>{currentPizza.title}</p>
+        <h4>{currentPizza.price} ₴</h4>
       </article>
     </Fade>
   );
