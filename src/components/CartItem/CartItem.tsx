@@ -8,8 +8,25 @@ import {
   increaseAmount,
   deleteItem,
 } from '../../redux/slices/cartSlice';
+import { FC } from 'react';
 
-const CartItem = ({ name, img, activeType, activeSize, price, pizzaCount }) => {
+interface CartItemProps {
+  name: string;
+  img: string;
+  activeType: string;
+  activeSize: string;
+  price: number;
+  pizzaCount: number;
+}
+
+const CartItem: FC<CartItemProps> = ({
+  name,
+  img,
+  activeType,
+  activeSize,
+  price,
+  pizzaCount,
+}) => {
   const dispatch = useDispatch();
 
   return (
