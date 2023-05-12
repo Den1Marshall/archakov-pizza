@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import styles from './FullPizza.module.css';
 
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { Fade } from '@mui/material';
 
-const FullPizza = () => {
+const FullPizza: FC = () => {
   const { id } = useParams();
 
   interface IPizza {
@@ -21,7 +21,7 @@ const FullPizza = () => {
 
   const navigate = useNavigate();
 
-  const [currentPizza, setCurrentPizza] = useState(defaultPizza);
+  const [currentPizza, setCurrentPizza] = useState<IPizza>(defaultPizza);
 
   useEffect(() => {
     fetch(`https://63e9515f4f3c6aa6e7cb79a8.mockapi.io/api/v1/pizzas?id=${id}`)

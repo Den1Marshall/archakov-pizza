@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
 import styles from './ErrorPage.module.css';
+import { FC } from 'react';
 
-const ErrorPage = () => {
+const ErrorPage: FC = () => {
   return (
     <article className={styles.error}>
       <span className={styles.emoji}>😕</span>
