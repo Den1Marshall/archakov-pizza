@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import styles from './FullPizza.module.css';
 
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { Fade } from '@mui/material';
 
 const FullPizza = () => {
@@ -44,6 +44,7 @@ const FullPizza = () => {
         <h2>{currentPizza.title}</h2>
         <p>{currentPizza.title}</p>
         <h4>{currentPizza.price} ₴</h4>
+        <Link to={'/'}>Назад</Link>
       </article>
     </Fade>
   );
