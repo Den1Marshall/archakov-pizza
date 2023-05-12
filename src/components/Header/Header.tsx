@@ -5,9 +5,11 @@ import { Link, useLocation } from 'react-router-dom';
 
 import icon from './icon.svg';
 import Search from '../Search/Search';
+import { FC } from 'react';
 
-const Header = () => {
+const Header: FC = () => {
   const { pathname } = useLocation();
+
   return (
     <header className={styles.header}>
       <Link to='/'>
