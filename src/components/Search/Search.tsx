@@ -7,19 +7,19 @@ import debounce from 'lodash.debounce';
 
 const Search = () => {
   const { setInputValue } = useContext(SearchContext);
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState<string>('');
 
-  const inputRef = useRef(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const inputDebounce = useCallback(
-    debounce((str) => {
+    debounce((str: string) => {
       setInputValue(str);
     }, 250),
     []
   );
 
-  const onInput = (e) => {
+  const onInput = (e: any) => {
     setValue(e.target.value);
     inputDebounce(e.target.value);
   };
@@ -27,7 +27,7 @@ const Search = () => {
   const clearInput = () => {
     setValue('');
     setInputValue('');
-    inputRef.current.focus();
+    inputRef.current?.focus();
   };
 
   return (
