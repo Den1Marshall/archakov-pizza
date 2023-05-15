@@ -1,9 +1,14 @@
 import { Link } from 'react-router-dom';
 import styles from './CartBtn.module.css';
 import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
+import { FC, memo } from 'react';
 
-const CartBtn = () => {
-  const { totalAmount, totalPrice } = useSelector((store) => store.cartSlice);
+const CartBtn: FC = () => {
+  const { totalAmount, totalPrice } = useSelector(
+    (state: RootState) => state.cartSlice
+  );
+
   return (
     <Link className={styles.link} to='/cart'>
       <button className={styles.btn}>
@@ -45,4 +50,4 @@ const CartBtn = () => {
   );
 };
 
-export default CartBtn;
+export default memo(CartBtn);
