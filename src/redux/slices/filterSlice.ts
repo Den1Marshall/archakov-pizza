@@ -1,6 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {
+interface IInitialState {
+  categoryID: number;
+  sort: {
+    name: string;
+    value: string;
+  };
+}
+
+const initialState: IInitialState = {
   categoryID: 0,
 
   sort: {

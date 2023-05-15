@@ -1,24 +1,43 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {
+export interface ICartItem {
+  name: string;
+  img: string;
+  activeType: string;
+  activeSize: number;
+  price: number;
+  pizzaCount: number;
+}
+
+interface IInitialState {
+  items: ICartItem[];
+  totalPrice: number;
+  totalAmount: number;
+}
+
+const initialState: IInitialState = {
   items: [],
   totalAmount: 0,
   totalPrice: 0,
 };
 
+interface ActionPayload {
+  payload: ICartItem;
+  type: string;
+}
+
 const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    addCartItem(state, action) {
-      const payloadType = action.payload.activeType;
-      const payloadSize = action.payload.activeSize;
-      const payloadName = action.payload.name;
+    addCartItem(state, action: ActionPayload) {
+      const { activeType, activeSize, name } = action.payload;
+
       const duplicateItemIndex = state.items.findIndex(
         (item) =>
-          item.activeType === payloadType &&
-          item.activeSize === payloadSize &&
-          payloadName === item.name
+          item.activeType === activeType &&
+          item.activeSize === activeSize &&
+          name === item.name
       );
 
       if (duplicateItemIndex === -1) {
@@ -31,8 +50,6 @@ const cartSlice = createSlice({
         state.totalAmount += 1;
         state.totalPrice += action.payload.price;
       }
-
-      console.log(action.payload.pizzaCount);
     },
 
     clearCart(state, action) {
@@ -42,19 +59,17 @@ const cartSlice = createSlice({
     },
 
     deleteItem(state, action) {
-      const payloadName = action.payload.name;
-      const payloadActiveSize = action.payload.activeSize;
-      const payloadActiveType = action.payload.activeType;
+      const { activeType, activeSize, name } = action.payload;
 
       const itemToDelete = state.items.find(
         (item) =>
-          item.name === payloadName &&
-          item.activeSize === payloadActiveSize &&
-          item.activeType === payloadActiveType
+          item.name === name &&
+          item.activeSize === activeSize &&
+          item.activeType === activeType
       );
 
-      state.totalAmount -= itemToDelete.pizzaCount;
-      state.totalPrice -= itemToDelete.price * itemToDelete.pizzaCount;
+      state.totalAmount -= itemToDelete!.pizzaCount;
+      state.totalPrice -= itemToDelete!.price * itemToDelete!.pizzaCount;
 
       state.items = state.items.filter((item) => item !== itemToDelete);
     },
@@ -72,29 +87,26 @@ const cartSlice = createSlice({
           item.activeType === payloadActiveType
       );
 
-      foundItem.pizzaCount++;
+      foundItem!.pizzaCount++;
 
       state.totalAmount++;
       state.totalPrice += payloadPrice;
     },
 
     decreaseAmount(state, action) {
-      const payloadName = action.payload.name;
-      const payloadActiveSize = action.payload.activeSize;
-      const payloadActiveType = action.payload.activeType;
-      const payloadPrice = action.payload.price;
+      const { name, activeSize, activeType, price } = action.payload;
 
       const foundItem = state.items.find(
         (item) =>
-          item.name === payloadName &&
-          item.activeSize === payloadActiveSize &&
-          item.activeType === payloadActiveType
+          item.name === name &&
+          item.activeSize === activeSize &&
+          item.activeType === activeType
       );
 
-      if (foundItem.pizzaCount > 1) {
-        foundItem.pizzaCount--;
+      if (foundItem!.pizzaCount > 1) {
+        foundItem!.pizzaCount--;
         state.totalAmount -= 1;
-        state.totalPrice -= payloadPrice;
+        state.totalPrice -= price;
         return;
       } else {
         return;
