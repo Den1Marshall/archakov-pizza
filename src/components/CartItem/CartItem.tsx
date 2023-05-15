@@ -14,7 +14,7 @@ interface CartItemProps {
   name: string;
   img: string;
   activeType: string;
-  activeSize: string;
+  activeSize: number;
   price: number;
   pizzaCount: number;
 }
@@ -46,7 +46,7 @@ const CartItem: FC<CartItemProps> = ({
       </h3>
       <div className={styles.wrapper}>
         <button
-          className={styles.btn}
+          className={`${pizzaCount > 1 ? styles.btn : styles.btnDisabled}`}
           onClick={() =>
             dispatch(decreaseAmount({ name, activeSize, activeType, price }))
           }
