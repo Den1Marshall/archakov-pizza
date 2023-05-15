@@ -1,11 +1,11 @@
 import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close';
 import styles from './Search.module.css';
-import { useCallback, useContext, useRef, useState } from 'react';
+import { FC, useCallback, useContext, useRef, useState } from 'react';
 import { SearchContext } from '../../context/SearchContext';
 import debounce from 'lodash.debounce';
 
-const Search = () => {
+const Search: FC = () => {
   const { setInputValue } = useContext(SearchContext);
   const [value, setValue] = useState<string>('');
 
@@ -19,12 +19,12 @@ const Search = () => {
     []
   );
 
-  const onInput = (e: any) => {
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
     inputDebounce(e.target.value);
   };
 
-  const clearInput = () => {
+  const clearInput = (): void => {
     setValue('');
     setInputValue('');
     inputRef.current?.focus();
@@ -36,7 +36,7 @@ const Search = () => {
       <input
         className={styles.input}
         value={value}
-        onInput={onInput}
+        onChange={onChange}
         ref={inputRef}
         type='text'
         placeholder='Поиск пиццы...'
