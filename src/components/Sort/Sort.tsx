@@ -1,12 +1,13 @@
-import { useState } from 'react';
-import styles from './Categories.module.css';
+import { memo, useState } from 'react';
+import styles from './Sort.module.css';
 import { Fade } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSort } from '../../redux/slices/filterSlice';
+import { RootState } from '../../redux/store';
 
 const CategoriesSort = () => {
   const [popupVisible, setPopupVisible] = useState(false);
-  const sortBy = useSelector((store) => store.filterSlice.sort);
+  const sortBy = useSelector((state: RootState) => state.filterSlice.sort);
   const dispatch = useDispatch();
 
   const sortTypes = [
@@ -35,8 +36,6 @@ const CategoriesSort = () => {
       value: 'title&order=asc',
     },
   ];
-
-  console.log('categories sort render');
 
   return (
     <div className={styles.sort}>
@@ -70,7 +69,7 @@ const CategoriesSort = () => {
             <li
               key={index}
               className={`${styles.popupItem} ${
-                sortType.value === sortBy.value ? styles.popupItemActive : ''
+                sortType.name === sortBy.name ? styles.popupItemActive : ''
               }`}
               onClick={() => {
                 setPopupVisible(false);
@@ -86,4 +85,4 @@ const CategoriesSort = () => {
   );
 };
 
-export default CategoriesSort;
+export default memo(CategoriesSort);

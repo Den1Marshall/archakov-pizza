@@ -1,14 +1,21 @@
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './Categories.module.css';
-import CategoriesSort from './CategoriesSort';
+import CategoriesSort from '../Sort/Sort';
 
 import { setCategoryID } from '../../redux/slices/filterSlice';
+import { FC } from 'react';
+import { RootState } from '../../redux/store';
 
-const Categories = () => {
-  const categoryID = useSelector((store) => store.filterSlice.categoryID);
+const Categories: FC = () => {
+  const categoryID = useSelector(
+    (state: RootState) => state.filterSlice.categoryID
+  );
+
   const dispatch = useDispatch();
 
-  const categories = [
+  type Categories = string[];
+
+  const categories: Categories = [
     'Все',
     'Мясные',
     'Вегетарианские',
@@ -16,8 +23,6 @@ const Categories = () => {
     'Острые',
     'Закрытые',
   ];
-
-  console.log('categories render');
 
   return (
     <section className={styles.categories}>
