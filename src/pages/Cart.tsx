@@ -6,10 +6,12 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearCart } from '../redux/slices/cartSlice';
 import CartEmpty from '../components/CartEmpty/CartEmpty';
+import { RootState } from '../redux/store';
+import { FC } from 'react';
 
-const Cart = () => {
+const Cart: FC = () => {
   const { totalAmount, totalPrice, items } = useSelector(
-    (store) => store.cartSlice
+    (state: RootState) => state.cartSlice
   );
 
   const isCartEmpty = totalAmount;
@@ -59,7 +61,7 @@ const Cart = () => {
               </h2>
               <button
                 className={styles.clearBtn}
-                onClick={() => dispatch(clearCart())}
+                onClick={() => dispatch(clearCart(null))}
               >
                 <svg
                   width='20'
@@ -97,7 +99,7 @@ const Cart = () => {
               </button>
             </div>
             <ul className={styles.list}>
-              {items.map((item, index) => (
+              {items.map((item: any, index: number) => (
                 <CartItem
                   key={index}
                   name={item.name}

@@ -1,21 +1,35 @@
 import styles from './Catalog.module.css';
-import { useContext, useEffect, useState } from 'react';
+import { FC, useContext, useEffect, useState } from 'react';
 
 import PizzaItem from '../PizzaItem/PizzaItem';
-import { Skeleton } from '../PizzaItem/Skeleton';
+import { Skeleton } from '../Skeleton/Skeleton';
 import { SearchContext } from '../../context/SearchContext';
 import { Pagination } from '@mui/material';
 import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
 
-const Catalog = () => {
-  const categoryID = useSelector((store) => store.filterSlice.categoryID);
-  const sortBy = useSelector((store) => store.filterSlice.sort);
+export interface IPizza {
+  category: number;
+  id: number;
+  imageUrl: string;
+  price: number;
+  rating: number;
+  sizes: number[];
+  title: string;
+  types: number[];
+}
+
+const Catalog: FC = () => {
+  const categoryID = useSelector(
+    (state: RootState) => state.filterSlice.categoryID
+  );
+  const sortBy = useSelector((state: RootState) => state.filterSlice.sort);
 
   const { inputValue } = useContext(SearchContext);
   const [renderedPizzas, setRenderedPizzas] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState<number>(1);
 
   const category = `&category=${categoryID ? categoryID : ''}`;
   const sort = sortBy ? `&sortBy=${sortBy.value}` : '';
@@ -25,7 +39,7 @@ const Catalog = () => {
   const getPizzas = async () => {
     setIsLoading(true);
     const response = await fetch(
-      `https://63e9515f4f3c6aa6e7cb79a8.mockapi.io/api/v1/pizzas?${category}${sort}${search}${pagination}`
+      `https://63e9515f4f3c6aa6e7cb79a8.mockapi.io/api/v1/pizzas?${sort}${category}${pagination}`
     );
 
     const pizzas = await response.json();
@@ -37,7 +51,7 @@ const Catalog = () => {
     const pizzas = await getPizzas();
 
     setRenderedPizzas(
-      pizzas.map((pizza) => (
+      pizzas.map((pizza: IPizza) => (
         <PizzaItem
           key={pizza.id}
           name={pizza.title}
@@ -62,8 +76,6 @@ const Catalog = () => {
   const skeleton = [...new Array(10)].map((value, index) => (
     <Skeleton key={index} />
   ));
-
-  console.log('catalog render');
 
   return (
     <main className={styles.catalog}>

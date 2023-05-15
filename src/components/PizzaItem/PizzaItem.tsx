@@ -1,15 +1,32 @@
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './PizzaItem.module.css';
 import { addCartItem } from '../../redux/slices/cartSlice';
-import { useState } from 'react';
+import { FC, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { RootState } from '../../redux/store';
 
-const PizzaItem = ({ name, img, types, sizes, price, id }) => {
+interface PizzaItemProps {
+  name: string;
+  img: string;
+  types: number[];
+  sizes: number[];
+  price: number;
+  id: number;
+}
+
+const PizzaItem: FC<PizzaItemProps> = ({
+  name,
+  img,
+  types,
+  sizes,
+  price,
+  id,
+}) => {
   const [pizzaCount, setPizzaCount] = useState(1);
   const [activeSize, setActiveSize] = useState(sizes[0]);
   const [activeType, setActiveType] = useState(types[0]);
 
-  const { items } = useSelector((store) => store.cartSlice);
+  const { items } = useSelector((state: RootState) => state.cartSlice);
 
   const dispatch = useDispatch();
 
