@@ -10,6 +10,8 @@ import { FC } from 'react';
 const Header: FC = () => {
   const { pathname } = useLocation();
 
+  console.log('header render');
+
   return (
     <header className={styles.header}>
       <Link to='/'>
