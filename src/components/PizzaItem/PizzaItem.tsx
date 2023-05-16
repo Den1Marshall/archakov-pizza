@@ -26,7 +26,9 @@ const PizzaItem: FC<PizzaItemProps> = ({
   const [activeSize, setActiveSize] = useState(sizes[0]);
   const [activeType, setActiveType] = useState(types[0]);
 
-  const { items } = useSelector((state: RootState) => state.cartSlice);
+  const { items } = useSelector(
+    (state: RootState) => state.cartSlicePersistedReducer
+  );
 
   const dispatch = useDispatch();
 

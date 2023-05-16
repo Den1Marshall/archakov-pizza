@@ -6,7 +6,7 @@ import { FC, memo } from 'react';
 
 const CartBtn: FC = () => {
   const { totalAmount, totalPrice } = useSelector(
-    (state: RootState) => state.cartSlice
+    (state: RootState) => state.cartSlicePersistedReducer
   );
 
   return (

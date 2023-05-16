@@ -21,9 +21,11 @@ export interface IPizza {
 
 const Catalog: FC = () => {
   const categoryID = useSelector(
-    (state: RootState) => state.filterSlice.categoryID
+    (state: RootState) => state.filterSlicePersistedReducer.categoryID
   );
-  const sortBy = useSelector((state: RootState) => state.filterSlice.sort);
+  const sortBy = useSelector(
+    (state: RootState) => state.filterSlicePersistedReducer.sort
+  );
 
   const { inputValue } = useContext(SearchContext);
   const [renderedPizzas, setRenderedPizzas] = useState(null);
@@ -33,7 +35,7 @@ const Catalog: FC = () => {
 
   const category = `&category=${categoryID ? categoryID : ''}`;
   const sort = sortBy ? `&sortBy=${sortBy.value}` : '';
-  const search = `&title=${inputValue ? inputValue : ''}`;
+  // const search = `&title=${inputValue ? inputValue : ''}`;
   const pagination = `&page=${currentPage}&limit=4`;
 
   const getPizzas = async () => {

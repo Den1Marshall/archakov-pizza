@@ -1,13 +1,15 @@
-import { memo, useState } from 'react';
+import { FC, memo, useState } from 'react';
 import styles from './Sort.module.css';
 import { Fade } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSort } from '../../redux/slices/filterSlice';
 import { RootState } from '../../redux/store';
 
-const CategoriesSort = () => {
+const Sort: FC = () => {
   const [popupVisible, setPopupVisible] = useState(false);
-  const sortBy = useSelector((state: RootState) => state.filterSlice.sort);
+  const sortBy = useSelector(
+    (state: RootState) => state.filterSlicePersistedReducer.sort
+  );
   const dispatch = useDispatch();
 
   const sortTypes = [
@@ -85,4 +87,4 @@ const CategoriesSort = () => {
   );
 };
 
-export default memo(CategoriesSort);
+export default memo(Sort);

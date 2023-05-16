@@ -11,7 +11,7 @@ import { FC } from 'react';
 
 const Cart: FC = () => {
   const { totalAmount, totalPrice, items } = useSelector(
-    (state: RootState) => state.cartSlice
+    (state: RootState) => state.cartSlicePersistedReducer
   );
 
   const isCartEmpty = totalAmount;

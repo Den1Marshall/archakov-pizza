@@ -8,7 +8,7 @@ import { RootState } from '../../redux/store';
 
 const Categories: FC = () => {
   const categoryID = useSelector(
-    (state: RootState) => state.filterSlice.categoryID
+    (state: RootState) => state.filterSlicePersistedReducer.categoryID
   );
 
   const dispatch = useDispatch();
