@@ -70,7 +70,7 @@ const Catalog: FC = () => {
   };
 
   useEffect(() => {
-    // window.scrollTo(0, 0);
+    window.scrollTo(0, 0);
     renderPizzas();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [categoryID, sortBy, inputValue, currentPage]);
