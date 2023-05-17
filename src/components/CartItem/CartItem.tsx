@@ -31,13 +31,7 @@ const CartItem: FC<CartItemProps> = ({
 
   return (
     <li className={styles.item}>
-      <img
-        className={styles.img}
-        src={img}
-        alt='Pizza'
-        width={80}
-        height={80}
-      />
+      <img src={img} alt='Pizza' width={80} height={80} />
       <h3 className={styles.title}>
         {name}
         <p className={styles.subtitle}>
@@ -66,7 +60,9 @@ const CartItem: FC<CartItemProps> = ({
       <p className={styles.price}>{price} ₴</p>
       <button
         className={styles.deleteBtn}
-        onClick={() => dispatch(deleteItem({ name, activeSize, activeType }))}
+        onClick={() => {
+          dispatch(deleteItem({ name, activeSize, activeType }));
+        }}
       >
         <CloseIcon />
       </button>

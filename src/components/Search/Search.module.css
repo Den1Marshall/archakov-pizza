@@ -39,12 +39,16 @@
 
 @media (max-width: 1199px) {
   .search {
-    width: 100% !important;
+    width: 44%;
+    margin: 0;
+    margin-left: auto;
   }
 }
 
 @media (max-width: 899px) {
   .search {
+    width: 100%;
+    margin: 0 auto;
     margin-top: 40px;
   }
 }

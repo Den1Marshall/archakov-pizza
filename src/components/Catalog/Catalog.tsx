@@ -89,6 +89,7 @@ const Catalog: FC = () => {
         size='large'
         count={categoryID === 0 ? 3 : 1}
         page={currentPage}
+        className={styles.pagination}
         onChange={(e, value) => setCurrentPage(value)}
       />
     </main>

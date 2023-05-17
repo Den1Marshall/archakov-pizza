@@ -1,5 +1,6 @@
 .item {
   display: flex;
+  flex-flow: row wrap;
   justify-content: space-between;
   align-items: center;
   width: 100%;
@@ -98,4 +99,31 @@
 
 .deleteBtn:active {
   transform: translateY(1px);
+}
+
+@media (max-width: 599px) {
+  .item {
+    flex-flow: column wrap;
+    text-align: center;
+    position: relative;
+  }
+
+  .title {
+    margin-top: 15px;
+  }
+
+  .wrapper {
+    margin-top: 35px;
+    order: 1;
+  }
+
+  .price {
+    margin-top: 35px;
+  }
+
+  .deleteBtn {
+    position: absolute;
+    right: 0;
+    top: 15px;
+  }
 }

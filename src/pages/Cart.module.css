@@ -98,3 +98,15 @@
   color: #fff;
   background-color: #fe5f1e;
 }
+
+@media (max-width: 599px) {
+  .title {
+    font-size: 24px;
+    margin-bottom: 3px;
+  }
+
+  .title svg {
+    width: 24px;
+    height: 24px;
+  }
+}

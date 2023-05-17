@@ -55,7 +55,7 @@
   background-color: rgba(254, 95, 30, 0.05);
 }
 
-@media (max-width: 899px) {
+@media (max-width: 1199px) {
   .sort {
     margin: 0 auto;
     margin-top: 40px;
