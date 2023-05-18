@@ -114,16 +114,20 @@
 
   .wrapper {
     margin-top: 35px;
-    order: 1;
   }
 
   .price {
-    margin-top: 35px;
+    margin-top: 40px;
   }
 
   .deleteBtn {
     position: absolute;
     right: 0;
     top: 15px;
+  }
+
+  .img {
+    width: 180px;
+    height: auto;
   }
 }

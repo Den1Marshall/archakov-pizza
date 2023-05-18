@@ -31,7 +31,13 @@ const CartItem: FC<CartItemProps> = ({
 
   return (
     <li className={styles.item}>
-      <img src={img} alt='Pizza' width={80} height={80} />
+      <img
+        className={styles.img}
+        src={img}
+        alt='Pizza'
+        width={80}
+        height={80}
+      />
       <h3 className={styles.title}>
         {name}
         <p className={styles.subtitle}>

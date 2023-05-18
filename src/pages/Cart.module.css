@@ -66,12 +66,12 @@
 
 .bottomAmount {
   width: 50%;
-  font-size: 22px;
+  font-size: 18px;
 }
 
 .bottomTotal {
   width: 50%;
-  font-size: 22px;
+  font-size: 18px;
   text-align: right;
 }
 
@@ -108,5 +108,30 @@
   .title svg {
     width: 24px;
     height: 24px;
+  }
+
+  .bottom {
+    flex-flow: column wrap;
+    text-align: center;
+  }
+
+  .bottomTotal {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 406px) {
+  .wrapper {
+    flex-flow: column wrap;
+  }
+
+  .title {
+    font-size: 36px;
+  }
+
+  .title svg {
+    width: 30px;
+    height: 30px;
   }
 }
